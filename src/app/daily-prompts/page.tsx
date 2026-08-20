@@ -1,33 +1,18 @@
-import { getDailyPrompt, getPromptAchievement } from "@/lib/daily-prompt";
+import { AppShell } from "@/components/social-shell";
+import { PromptExperience } from "@/components/prompt-experience";
+import { PageAdRails } from "@/components/page-ad-rails";
+import { getCurrentDailyPrompt } from "@/lib/daily-prompt";
 
 export default function DailyPromptPage() {
-  const prompt = getDailyPrompt(new Date("2026-08-18T12:00:00Z"));
-  const achievement = getPromptAchievement([
-    { userId: "user-1", date: "2026-08-10" },
-    { userId: "user-1", date: "2026-08-18" }
-  ]);
+  const prompt = getCurrentDailyPrompt();
 
   return (
-    <main className="page-shell">
-      <section className="panel wide-panel">
-        <p className="eyebrow">Daily community prompt</p>
-        <h1>Reflection prompt</h1>
-
-        <div className="prompt-card">
-          <span className="pill soft">{prompt.category}</span>
-          <h2>{prompt.question}</h2>
-          <p className="muted">
-            Participation is encouraged but never punished for missing a day. Progress is cumulative and respectful.
-          </p>
-          <button className="primary-action" type="button">Answer today</button>
-        </div>
-
-        <div className="prompt-achievement">
-          <h3>Participation milestone</h3>
-          <p>{achievement?.label ?? "No prompt participation yet"}</p>
-          <span className="tag">{achievement?.level ?? "not started"}</span>
-        </div>
-      </section>
-    </main>
+    <AppShell viewer={{ id: "user-1", username: "calvinm", displayName: "Calvin M.", verified: true }}>
+      <PageAdRails>
+        <main className="prompt-page">
+          <PromptExperience prompt={prompt} />
+        </main>
+      </PageAdRails>
+    </AppShell>
   );
 }

@@ -24,24 +24,24 @@ export type BadgeDefinition = {
 
 export const themeCatalog: Record<ThemeName, { label: string; gradient: string }> = {
   forest: {
-    label: "Forest",
-    gradient: "linear-gradient(135deg, #1d4f3a 0%, #97d3b4 100%)"
+    label: "Harbor",
+    gradient: "linear-gradient(135deg, var(--brand-midnight) 0%, var(--brand-teal-deep) 100%)"
   },
   aurora: {
-    label: "Aurora",
-    gradient: "linear-gradient(135deg, #0f172a 0%, #22c55e 100%)"
+    label: "Tidal",
+    gradient: "linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-teal) 100%)"
   },
   midnight: {
     label: "Midnight",
-    gradient: "linear-gradient(135deg, #0f172a 0%, #3b82f6 100%)"
+    gradient: "linear-gradient(135deg, var(--brand-midnight) 0%, var(--brand-navy) 100%)"
   },
   sunset: {
-    label: "Sunset",
-    gradient: "linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%)"
+    label: "Harbor Light",
+    gradient: "linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-teal-soft) 100%)"
   },
   lilac: {
-    label: "Lilac",
-    gradient: "linear-gradient(135deg, #4c1d95 0%, #d8b4fe 100%)"
+    label: "Blue Hour",
+    gradient: "linear-gradient(135deg, var(--brand-midnight) 0%, var(--brand-slate-light) 100%)"
   }
 };
 

@@ -5,9 +5,16 @@ export type PromptParticipation = {
 
 export type DailyPrompt = {
   id: string;
-  category: "weekly-reflection" | "community" | "learning";
+  category: "current-moment" | "environment" | "observation" | "object" | "creative-interpretation";
   question: string;
   date: string;
+  timing: "surprise-window";
+};
+
+export type PromptResponsePreview = {
+  userId: string;
+  displayName: string;
+  text: string;
 };
 
 export type PromptAchievement = {
@@ -20,21 +27,33 @@ export type PromptAchievement = {
 const promptBank = [
   {
     id: "prompt-1",
-    category: "weekly-reflection",
-    question: "What is something you're looking forward to this week?",
+    category: "environment",
+    question: "Show us the view from the nearest window.",
     dateKey: "2026-08-18"
   },
   {
     id: "prompt-2",
-    category: "community",
-    question: "Who in your community has given you a boost lately?",
+    category: "observation",
+    question: "Show us the sky where you are right now.",
     dateKey: "2026-08-19"
   },
   {
     id: "prompt-3",
-    category: "learning",
-    question: "What is one thing you want to learn or practice this month?",
+    category: "object",
+    question: "Photograph the object closest to you.",
     dateKey: "2026-08-20"
+  },
+  {
+    id: "prompt-4",
+    category: "current-moment",
+    question: "What are you doing right now?",
+    dateKey: "2026-08-21"
+  },
+  {
+    id: "prompt-5",
+    category: "creative-interpretation",
+    question: "Take a photo that represents your mood right now.",
+    dateKey: "2026-08-22"
   }
 ] as const;
 
@@ -48,9 +67,32 @@ export function getDailyPrompt(date: Date): DailyPrompt {
     id: prompt.id,
     category: prompt.category,
     question: prompt.question,
-    date: dateKey
+    date: dateKey,
+    timing: "surprise-window"
   };
 }
+
+export function getCurrentDailyPrompt() {
+  return getDailyPrompt(new Date("2026-08-19T12:00:00Z"));
+}
+
+export const promptResponsePreviews: PromptResponsePreview[] = [
+  {
+    userId: "user-2",
+    displayName: "Dragonfire",
+    text: "My desk has somehow become even more chaotic."
+  },
+  {
+    userId: "user-3",
+    displayName: "Horizon",
+    text: "The sky looked completely different five minutes ago."
+  },
+  {
+    userId: "user-1",
+    displayName: "Calvin M.",
+    text: "A quiet corner and the first coffee of the morning."
+  }
+];
 
 export function recordPromptParticipation(
   history: PromptParticipation[],

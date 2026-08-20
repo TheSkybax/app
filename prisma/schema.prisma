@@ -42,6 +42,7 @@ model User {
   posts           Post[]
   comments        Comment[]
   reactions       Reaction[]
+  reposts         Repost[]
   notifications   Notification[]
   followsGiven    Follow[]   @relation("FollowedBy")
   followsReceived Follow[]   @relation("FollowedUser")
@@ -99,6 +100,20 @@ model Post {
   replies     Post[]          @relation("PostReplies")
   comments    Comment[]
   reactions   Reaction[]
+  reposts     Repost[]
+}
+
+// A repost references an existing Post. Authorization must always be evaluated
+// against originalPost.visibility; the reposter's settings never broaden access.
+model Repost {
+  id             String   @id @default(cuid())
+  userId         String
+  originalPostId String
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+  originalPost   Post     @relation(fields: [originalPostId], references: [id])
+
+  @@unique([userId, originalPostId])
 }
 
 model Comment {

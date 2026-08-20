@@ -54,8 +54,10 @@ export default function HomePage() {
   const timeline = feed.map((post) => ({
     ...post,
     text: post.text ?? "",
+    contentType: post.id === "post-2" ? "photo" as const : post.id === "post-3" ? "long-form" as const : "text" as const,
+    communityId: post.id === "post-3" ? "comm-3" : undefined,
     author: demoUsers.find((user) => user.id === post.authorId)
   }));
 
-  return <SocialShell viewer={viewer} feed={timeline} discovery={discovery} />;
+  return <SocialShell viewer={viewer} feed={timeline} discovery={discovery} followedUserIds={demoFollowing} />;
 }

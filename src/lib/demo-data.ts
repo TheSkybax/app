@@ -4,7 +4,7 @@ export const demoUsers = [
     username: "calvinm",
     displayName: "Calvin M.",
     verified: true,
-    bio: "Building a calmer internet.",
+    bio: "Photographer, maker, and weekend walker.",
     avatar: "CM",
     createdAt: "2024-08-18T00:00:00Z"
   },
@@ -90,5 +90,56 @@ export const demoPosts = [
     isAd: true,
     text: "Sponsored: discover a smarter way to run your creative workflow.",
     author: demoUsers[3]
+  }
+] as const;
+
+export const demoDiscoveryPosts = [
+  {
+    id: "discovery-post-1",
+    authorId: "user-4",
+    visibility: "everyone",
+    createdAt: "2026-08-18T13:00:00Z",
+    isAd: false,
+    text: "A photo walk through the old market district: six frames, one good conversation, and a reminder to look up.",
+    tags: ["photography", "community"],
+    author: {
+      id: "user-4",
+      username: "fieldnotes",
+      displayName: "Field Notes",
+      verified: false,
+      avatar: "FN"
+    }
+  },
+  {
+    id: "discovery-post-2",
+    authorId: "user-5",
+    visibility: "everyone",
+    createdAt: "2026-08-18T11:30:00Z",
+    isAd: false,
+    text: "What are you making this weekend? Sharing works in progress is more interesting than waiting for perfect results.",
+    tags: ["makers-lab", "art", "community"],
+    author: {
+      id: "user-5",
+      username: "studionorth",
+      displayName: "Studio North",
+      verified: true,
+      avatar: "SN"
+    }
+  },
+  {
+    id: "discovery-post-3",
+    authorId: "user-6",
+    visibility: "everyone",
+    createdAt: "2026-08-18T10:15:00Z",
+    isAd: false,
+    text: "A tiny open-source tool for neighborhood groups is looking for early testers.",
+    tags: ["technology", "open-source", "local-groups"],
+    author: {
+      id: "user-6",
+      username: "horizon-labs",
+      displayName: "Horizon Labs",
+      verified: false,
+      avatar: "HL"
+    }
   }
 ] as const;

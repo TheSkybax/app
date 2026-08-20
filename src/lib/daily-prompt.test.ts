@@ -9,9 +9,10 @@ import {
 
 describe("phase 4 daily prompts", () => {
   it("returns a positive daily prompt for the current day", () => {
-    const prompt = getDailyPrompt(new Date("2026-08-18T12:00:00Z"));
-    expect(prompt.question).toContain("something you're looking forward to");
-    expect(prompt.category).toBe("weekly-reflection");
+    const prompt = getDailyPrompt(new Date("2026-08-19T12:00:00Z"));
+    expect(prompt.question).toContain("sky");
+    expect(prompt.category).toBe("observation");
+    expect(prompt.timing).toBe("surprise-window");
   });
 
   it("records participation cumulatively without requiring a streak", () => {
